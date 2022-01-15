@@ -1,0 +1,22 @@
+{
+    "name": "graphql",
+    "version": "1.0.0",
+    "main": "src/index.js",
+    "license": "MIT",
+    "private": true,
+    "author": "Bruno Hubner <brunohubnerdev@gmail.com>",
+    "scripts": {
+        "dev": "nodemon -r sucrase/register src"
+    },
+    "dependencies": {
+        "apollo-server": "3.6.1",
+        "graphql": "16.2.0"
+    },
+    "devDependencies": {
+        "eslint": "8.6.0",
+        "nodemon": "2.0.15",
+        "prettier": "2.5.1",
+        "sucrase": "3.20.3"
+    },
+    "type": "module"
+}
