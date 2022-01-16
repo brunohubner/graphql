@@ -1,7 +1,7 @@
-import { getUsers } from "./user/api"
-import { getPosts } from "./post/api"
-import { createUsersDataloader } from "./user/dataloaders"
-import { createPostsDataloader } from "./post/dataloaders"
+import { getUsers } from "./users/api"
+import { getPosts } from "./posts/api"
+import { createUsersDataloader } from "./users/dataloaders"
+import { createPostsDataloader } from "./posts/dataloaders"
 
 export function context() {
     return {

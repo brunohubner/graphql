@@ -10,6 +10,7 @@
         "server": "json-server --watch src/data/db.json -p 3333"
     },
     "dependencies": {
+        "apollo-datasource-rest": "3.5.0",
         "apollo-server": "3.6.1",
         "axios": "0.24.0",
         "dataloader": "2.0.0",
