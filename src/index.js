@@ -1,3 +1,4 @@
+import "dotenv/config"
 import { ApolloServer } from "apollo-server"
 import { context } from "./graphql/context"
 import { resolvers, typeDefs } from "./graphql/schema"

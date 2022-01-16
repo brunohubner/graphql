@@ -8,8 +8,8 @@ async function posts(_, { input }, { getPosts }) {
     return await getPosts("?" + getUrlParams(input))
 }
 
-async function user({ userId }, _, { getUsers }) {
-    return await getUsers(userId)
+async function user({ userId }, _, { usersDataloader }) {
+    return usersDataloader.load(userId)
 }
 
 export const postResolvers = {
