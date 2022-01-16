@@ -1,13 +1,14 @@
-import { ApolloServer, gql } from "apollo-server"
+import { ApolloServer } from "apollo-server"
+import { context } from "./graphql/context"
+import { resolvers, typeDefs } from "./graphql/schema"
 
 const server = new ApolloServer({
-    typeDefs: gql`
-        type Query {
-            hello: String
-        }
-    `
+    typeDefs,
+    resolvers,
+    context
 })
 
-server.listen(3333).then(({ url }) => {
+server.listen(3334).then(({ url }) => {
+    // eslint-disable-next-line no-console
     console.log(`Server listen at ${url}`)
 })
