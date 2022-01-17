@@ -1,15 +1,13 @@
-import { getUrlParams } from "../../utils/getUrlParams"
-
-async function user(_, { id }, { getUsers }) {
-    return await getUsers(id)
+async function user(_, { id }, { dataSources }) {
+    return await dataSources.usersApi.getUser(id)
 }
 
-async function users(_, { input }, { getUsers }) {
-    return await getUsers("?" + getUrlParams(input))
+async function users(_, { input }, { dataSources }) {
+    return await dataSources.usersApi.getUsers(input)
 }
 
-async function posts({ id }, _, { postsDataloader }) {
-    return postsDataloader.load(id)
+async function posts({ id }, _, { dataSources }) {
+    return dataSources.postsApi.batchLoadById(id)
 }
 
 export const userResolvers = {
