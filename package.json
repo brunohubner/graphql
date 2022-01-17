@@ -6,7 +6,8 @@
     "private": true,
     "author": "Bruno Hubner <brunohubnerdev@gmail.com>",
     "scripts": {
-        "dev": "nodemon -r sucrase/register src",
+        "start": "node -r sucrase/register .",
+        "dev": "nodemon -r sucrase/register .",
         "server": "json-server --watch src/data/db.json -p 3333"
     },
     "dependencies": {
