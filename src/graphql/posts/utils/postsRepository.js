@@ -41,6 +41,12 @@ export async function updatePostFn(postId, postData, dataSource) {
     return await dataSource.patch(postId, postData)
 }
 
+export async function deletePostFn(postId, dataSource) {
+    if (!postId) throw new ValidationError("Post id is missing")
+    const deleted = await dataSource.delete(postId)
+    return !!deleted
+}
+
 export async function createPostInfo(postData, dataSource) {
     const { title, body, userId } = postData
     await userExists(userId, dataSource)
