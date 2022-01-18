@@ -1,0 +1,24 @@
+mutation CREATE_USER($data: CreateUserInput!) {
+    createUser(data: $data) {
+        id
+        firstName
+        lastName
+        userName
+        posts {
+            id
+            title
+        }
+        createdAt
+        __typename
+    }
+}
+
+# variables
+
+# {
+#   "data": {
+#     "firstName": "Bruno",
+#     "lastName": "Hubner",
+#     "userName": "brunohubner"
+#   }
+# }

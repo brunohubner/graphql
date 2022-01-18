@@ -1,0 +1,25 @@
+mutation UPDATE_USER($updateUserId: ID!, $data: UpdateUserInput!) {
+    updateUser(id: $updateUserId, data: $data) {
+        id
+        firstName
+        lastName
+        indexRef
+        userName
+        posts {
+            id
+            title
+        }
+        createdAt
+        __typename
+    }
+}
+
+# variables
+
+# {  "updateUserId": "9ysCTG7",
+#   "data": {
+#     "firstName": "Bruno",
+#     "lastName": "Hubner",
+#     "userName": "brunohubner"
+#   }
+# }

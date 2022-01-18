@@ -1,0 +1,17 @@
+query GET_USER($userId: ID!) {
+    user(id: $userId) {
+        id
+        firstName
+        indexRef
+        posts {
+            id
+            title
+        }
+    }
+}
+
+# variables
+
+# {
+#   "userId": "29"
+# }

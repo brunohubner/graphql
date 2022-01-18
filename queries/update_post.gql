@@ -1,0 +1,21 @@
+mutation UPDATE_POST($postId: ID!, $data: UpdatePostInput!) {
+    updatePost(postId: $postId, data: $data) {
+        id
+        title
+        body
+        user {
+            id
+            firstName
+        }
+    }
+}
+
+# variables
+
+# {  "postId": "860",
+#   "data": {
+#     "title": "title",
+#     "body": "body",
+#     "userId": "29"
+#   }
+# }

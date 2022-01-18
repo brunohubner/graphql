@@ -1,0 +1,17 @@
+query GET_POST($postId: ID!) {
+    post(id: $postId) {
+        id
+        title
+        body
+        user {
+            id
+            firstName
+        }
+    }
+}
+
+# variables
+
+# {
+#   "postId": "fNbXf0R"
+# }

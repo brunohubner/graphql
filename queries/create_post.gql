@@ -1,0 +1,22 @@
+mutation CREATE_POST($data: CreatePostInput!) {
+    createPost(data: $data) {
+        id
+        title
+        indexRef
+        createdAt
+        body
+        user {
+            firstName
+        }
+    }
+}
+
+# variables
+
+# {
+#   "data": {
+#     "title": "title",
+#     "body": "body",
+#     "userId": "592"
+#   }
+# }

@@ -1,0 +1,21 @@
+query GET_POSTS($input: ApiFiltersInput) {
+    posts(input: $input) {
+        id
+        title
+        user {
+            id
+            firstName
+        }
+    }
+}
+
+# variables
+
+# {
+#   "input": {
+#     "_limit": "10",
+#     "_order": "ASC",
+#     "_sort": "indexRef",
+#     "_start": 1
+#   }
+# }

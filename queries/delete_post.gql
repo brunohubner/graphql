@@ -1,0 +1,9 @@
+mutation DELETE_POST($postId: ID!) {
+    deletePost(postId: $postId)
+}
+
+# variables
+
+# {
+#   "postId": "fNbXf0R"
+# }

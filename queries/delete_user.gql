@@ -1,0 +1,9 @@
+mutation DELETE_USER($deleteUserId: ID!) {
+    deleteUser(id: $deleteUserId)
+}
+
+# variables
+
+# {
+#   "deleteUserId": "9ysCTG7"
+# }
