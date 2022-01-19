@@ -28,6 +28,8 @@ export class LoginApi extends RESTDataSource {
         if (!validPassword) throw new AuthenticationError("Incorrect password")
         const token = AuthService.generateToken({ userId })
 
+        await this.patch(userId, { token }, { cacheOptions: { ttl: 0 } })
+
         return { token, userId }
     }
 }

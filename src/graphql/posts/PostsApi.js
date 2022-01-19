@@ -34,8 +34,8 @@ export class PostsApi extends RESTDataSource {
         return await updatePostFn(postId, postData, this)
     }
 
-    async deletePost(postId) {
-        return await deletePostFn(postId, this)
+    async deletePost(postId, userId) {
+        return await deletePostFn(postId, userId, this)
     }
 
     batchLoadById(id) {
