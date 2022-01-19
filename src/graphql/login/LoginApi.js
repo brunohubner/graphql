@@ -15,9 +15,9 @@ export class LoginApi extends RESTDataSource {
             { userName },
             { cacheOptions: { ttl: 0 } }
         )
-        const user = resp[0]
 
-        if (!user) throw new AuthenticationError("User does not exists")
+        const user = resp[0]
+        if (!user) throw new AuthenticationError("User does not exists!")
 
         const { passwordHash, id: userId } = user
         const validPassword = await AuthService.comparePassword(
@@ -25,11 +25,10 @@ export class LoginApi extends RESTDataSource {
             passwordHash
         )
 
-        if (!validPassword) throw new AuthenticationError("Incorrect password")
+        if (!validPassword) throw new AuthenticationError("Incorrect password!")
         const token = AuthService.generateToken({ userId })
 
         await this.patch(userId, { token }, { cacheOptions: { ttl: 0 } })
-
         return { token, userId }
     }
 }

@@ -33,6 +33,7 @@ export const typeDefs = [
     apiFiltersTypeDefs,
     loginTypeDefs
 ]
+
 export const resolvers = [
     rootResolvers,
     userResolvers,

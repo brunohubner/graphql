@@ -16,13 +16,13 @@ export class UsersApi extends RESTDataSource {
 
     async getUsers(urlParams = {}) {
         return this.get("", urlParams, {
-            cacheOptions: { ttl: 60 /* segs */ }
+            // cacheOptions: { ttl: 60 /* segs */ }
         })
     }
 
-    async getUser(id) {
-        return this.get(id, undefined, {
-            cacheOptions: { ttl: 60 /* segs */ }
+    async getUser(userId) {
+        return this.get(userId, undefined, {
+            // cacheOptions: { ttl: 60 /* segs */ }
         })
     }
 
@@ -30,15 +30,15 @@ export class UsersApi extends RESTDataSource {
         return await createUserFn(userData, this)
     }
 
-    async updateUser(id, userData) {
-        return await updateUserFn(id, userData, this)
+    async updateUser(userId, userData) {
+        return await updateUserFn(userId, userData, this)
     }
 
-    async deleteUser(id) {
-        return await deleteUserFn(id, this)
+    async deleteUser(userId, password) {
+        return await deleteUserFn(userId, password, this)
     }
 
-    batchLoadById(id) {
-        return this.dataloader.load(id)
+    batchLoadById(userId) {
+        return this.dataloader.load(userId)
     }
 }

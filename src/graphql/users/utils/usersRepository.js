@@ -1,4 +1,8 @@
-import { UserInputError, ValidationError } from "apollo-server"
+import {
+    AuthenticationError,
+    UserInputError,
+    ValidationError
+} from "apollo-server"
 import { AuthService } from "../../../security/AuthService"
 import { randomUUID } from "crypto"
 
@@ -31,9 +35,7 @@ async function checkUserFields(user, allFieldsRequired = false) {
         }
 
         if (field === "userName") validateUserName(user[field])
-
         if (field === "password") validateUserPassword(user[field])
-
         if (!user[field]) throw new Error(`User ${field} is missing!`)
     }
 
@@ -56,7 +58,6 @@ async function userExists(userName, dataSource) {
 
 export async function createUserFn(userData, dataSource) {
     await checkUserFields(userData, true)
-
     const indexRefUser = await dataSource.get("", {
         _limit: 1,
         _sort: "indexRef",
@@ -64,7 +65,6 @@ export async function createUserFn(userData, dataSource) {
     })
 
     const indexRef = indexRefUser[0]?.indexRef + 1 || 1
-
     const foundUser = await userExists(userData.userName, dataSource)
 
     if (typeof foundUser !== "undefined") {
@@ -81,25 +81,36 @@ export async function createUserFn(userData, dataSource) {
     })
 }
 
-export async function updateUserFn(id, userData, dataSource) {
+export async function updateUserFn(userId, userData, dataSource) {
     await checkUserFields(userData)
-
-    if (!id) throw new ValidationError("User id is missing!")
 
     if (userData.userName) {
         const foundUser = await userExists(userData.userName, dataSource)
 
-        if (typeof foundUser !== "undefined" && foundUser.id !== id) {
+        if (typeof foundUser !== "undefined" && foundUser.id !== userId) {
             throw new ValidationError(
                 `The userName ${userData.userName} has already been taken!`
             )
         }
     }
 
-    return dataSource.patch(id, userData)
+    return dataSource.patch(userId, userData)
 }
 
-export async function deleteUserFn(id, dataSource) {
-    if (!id) throw new ValidationError("User id is missing")
-    return !!(await dataSource.delete(id))
+export async function deleteUserFn(userId, password, dataSource) {
+    const resp = await dataSource.get("", { id: userId })
+    const user = resp[0]
+
+    if (!user) throw new AuthenticationError("User not found!")
+
+    const isValidPassword = await AuthService.comparePassword(
+        password,
+        user.passwordHash
+    )
+
+    if (!isValidPassword) {
+        throw new AuthenticationError("Password does not match!")
+    }
+
+    return !!(await dataSource.delete(userId))
 }

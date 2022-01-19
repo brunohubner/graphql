@@ -15,28 +15,33 @@ export async function updatePostFn(postId, postData, dataSource) {
     if (!postId) throw new ValidationError("Post id is missing!")
     const post = await dataSource.get(postId)
 
-    if (!post || post?.userId !== postData.userId) {
-        throw new ValidationError("You cannot delete this post")
+    if (!post) throw new ValidationError("Post not found!")
+
+    if (post.userId !== postData.userId) {
+        throw new ValidationError("You cannot update this post!")
     }
 
     const { title, body } = postData
 
     if (typeof title !== "undefined") {
-        if (!title) throw new ValidationError("Post title is missing")
+        if (!title) throw new ValidationError("Post title is missing!")
     }
     if (typeof body !== "undefined") {
-        if (!body) throw new ValidationError("Post body is missing")
+        if (!body) throw new ValidationError("Post body is missing!")
     }
 
     return await dataSource.patch(postId, postData)
 }
 
-export async function deletePostFn(postId, userId, dataSource) {
-    if (!postId) throw new ValidationError("Post id is missing")
-    const post = await dataSource.get(postId)
+export async function deletePostFn(postId, dataSource) {
+    if (!postId) throw new ValidationError("Post id is missing!")
 
-    if (!post || post?.userId !== userId) {
-        throw new ValidationError("You cannot delete this post")
+    const post = await dataSource.get(postId)
+    const userId = dataSource.context.loggedUserId
+
+    if (!post) throw new ValidationError("Post not found!")
+    if (post.userId !== userId) {
+        throw new ValidationError("You cannot delete this post!")
     }
 
     const deleted = await dataSource.delete(postId)

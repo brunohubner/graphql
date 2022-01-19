@@ -1,32 +1,32 @@
-import { AuthenticationError } from "apollo-server"
+import { isLogged } from "../login/isLogged"
 
 // Query resolvers
-async function post(_, { id }, { dataSources, loggedUserId }) {
-    if (!loggedUserId) throw new AuthenticationError("You must be logged!")
-    return await dataSources.postsApi.getPost(id)
+async function post(_, { postId }, { dataSources, loggedUserId }) {
+    isLogged(loggedUserId)
+    return await dataSources.postsApi.getPost(postId)
 }
 
 async function posts(_, { input }, { dataSources, loggedUserId }) {
-    if (!loggedUserId) throw new AuthenticationError("You must be logged!")
+    isLogged(loggedUserId)
     return await dataSources.postsApi.getPosts(input)
 }
 
 // Mutation resolvers
 async function createPost(_, { data }, { dataSources, loggedUserId }) {
-    if (!loggedUserId) throw new AuthenticationError("You must be logged!")
-    const postData = { ...data, ...{ userId: loggedUserId } }
-    return dataSources.postsApi.createPost(postData)
+    isLogged(loggedUserId)
+    data.userId = loggedUserId
+    return dataSources.postsApi.createPost(data)
 }
 
 async function updatePost(_, { postId, data }, { dataSources, loggedUserId }) {
-    if (!loggedUserId) throw new AuthenticationError("You must be logged!")
-    const postData = { ...data, ...{ userId: loggedUserId } }
-    return dataSources.postsApi.updatePost(postId, postData)
+    isLogged(loggedUserId)
+    data.userId = loggedUserId
+    return dataSources.postsApi.updatePost(postId, data)
 }
 
 async function deletePost(_, { postId }, { dataSources, loggedUserId }) {
-    if (!loggedUserId) throw new AuthenticationError("You must be logged!")
-    return dataSources.postsApi.deletePost(postId, loggedUserId)
+    isLogged(loggedUserId)
+    return dataSources.postsApi.deletePost(postId)
 }
 
 // Fields resolvers

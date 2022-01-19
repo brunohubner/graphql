@@ -16,13 +16,13 @@ export class PostsApi extends RESTDataSource {
 
     async getPosts(urlParams = {}) {
         return this.get("", urlParams, {
-            cacheOptions: { ttl: 60 /* segs */ }
+            // cacheOptions: { ttl: 60 /* segs */ }
         })
     }
 
-    async getPost(id) {
-        return this.get(id, undefined, {
-            cacheOptions: { ttl: 60 /* segs */ }
+    async getPost(postId) {
+        return this.get(postId, undefined, {
+            // cacheOptions: { ttl: 60 /* segs */ }
         })
     }
 
@@ -34,11 +34,11 @@ export class PostsApi extends RESTDataSource {
         return await updatePostFn(postId, postData, this)
     }
 
-    async deletePost(postId, userId) {
-        return await deletePostFn(postId, userId, this)
+    async deletePost(postId) {
+        return await deletePostFn(postId, this)
     }
 
-    batchLoadById(id) {
-        return this.dataloader.load(id)
+    batchLoadById(postId) {
+        return this.dataloader.load(postId)
     }
 }

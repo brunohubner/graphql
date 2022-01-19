@@ -11,7 +11,6 @@ async function authorizeUser(req) {
         usersApi.initialize({})
 
         const user = await usersApi.getUser(userId)
-
         if (!user || user?.token !== token) return ""
 
         return userId

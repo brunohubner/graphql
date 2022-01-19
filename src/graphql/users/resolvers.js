@@ -1,4 +1,4 @@
-import { AuthenticationError } from "apollo-server"
+import { isLogged } from "../login/isLogged"
 
 // Query resolvers
 async function user(_, { id }, { dataSources }) {
@@ -14,19 +14,14 @@ async function createUser(_, { data }, { dataSources }) {
     return dataSources.usersApi.createUser(data)
 }
 
-async function updateUser(_, { id, data }, { dataSources, loggedUserId }) {
-    if (!loggedUserId) throw new AuthenticationError("You must be logged!")
-    if (id !== loggedUserId) {
-        throw new AuthenticationError("You cannot update this user!")
-    }
-    return dataSources.usersApi.updateUser(id, data)
+async function updateUser(_, { data }, { dataSources, loggedUserId }) {
+    isLogged(loggedUserId)
+    return dataSources.usersApi.updateUser(loggedUserId, data)
 }
 
-async function deleteUser(_, { id }, { dataSources, loggedUserId }) {
-    if (id !== loggedUserId) {
-        throw new AuthenticationError("You cannot delete this user!")
-    }
-    return dataSources.usersApi.deleteUser(id)
+async function deleteUser(_, { password }, { dataSources, loggedUserId }) {
+    isLogged(loggedUserId)
+    return dataSources.usersApi.deleteUser(loggedUserId, password)
 }
 
 // Fields resolvers
