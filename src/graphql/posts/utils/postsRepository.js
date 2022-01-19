@@ -1,4 +1,5 @@
 import { ValidationError } from "apollo-server"
+import { randomUUID } from "crypto"
 
 async function userExists(userId, dataSource) {
     try {
@@ -57,9 +58,10 @@ export async function createPostInfo(postData, dataSource) {
         _order: "desc"
     })
 
-    const indexRef = indexRefPost[0].indexRef + 1
+    const indexRef = indexRefPost[0]?.indexRef + 1 || 1
 
     return {
+        id: randomUUID(),
         title,
         body,
         userId,

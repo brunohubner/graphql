@@ -1,4 +1,6 @@
-import { ValidationError } from "apollo-server"
+import { UserInputError, ValidationError } from "apollo-server"
+import { AuthService } from "../../../security/AuthService"
+import { randomUUID } from "crypto"
 
 function validateUserName(userName) {
     const userNameRegExp = /^[a-z]([a-z0-9_.]+)+$/gi
@@ -8,8 +10,20 @@ function validateUserName(userName) {
     }
 }
 
-function checkUserFields(user, allFieldsRequired = false) {
-    const userFields = ["firstName", "lastName", "userName"]
+function validateUserPassword(password) {
+    // letters and numbers: 8-32
+    const strongPasswordRegex = /^(?=.*[a-z])(?=.*[0-9]).{8,32}$/
+
+    if (!password.match(strongPasswordRegex)) {
+        throw new UserInputError(
+            "Password must contain at least: " +
+                "One letter, one number and 8 at 32 caracters."
+        )
+    }
+}
+
+async function checkUserFields(user, allFieldsRequired = false) {
+    const userFields = ["firstName", "lastName", "userName", "password"]
 
     for (const field of userFields) {
         if (!allFieldsRequired) {
@@ -18,7 +32,17 @@ function checkUserFields(user, allFieldsRequired = false) {
 
         if (field === "userName") validateUserName(user[field])
 
+        if (field === "password") validateUserPassword(user[field])
+
         if (!user[field]) throw new Error(`User ${field} is missing!`)
+    }
+
+    if (user.password && !user.passwordHash) {
+        const { password } = user
+        const passwordHash = await AuthService.hashPassword(password)
+
+        user.passwordHash = passwordHash
+        delete user.password
     }
 }
 
@@ -31,7 +55,7 @@ async function userExists(userName, dataSource) {
 }
 
 export async function createUserFn(userData, dataSource) {
-    checkUserFields(userData, true)
+    await checkUserFields(userData, true)
 
     const indexRefUser = await dataSource.get("", {
         _limit: 1,
@@ -39,7 +63,7 @@ export async function createUserFn(userData, dataSource) {
         _order: "desc"
     })
 
-    const indexRef = indexRefUser[0].indexRef + 1
+    const indexRef = indexRefUser[0]?.indexRef + 1 || 1
 
     const foundUser = await userExists(userData.userName, dataSource)
 
@@ -50,6 +74,7 @@ export async function createUserFn(userData, dataSource) {
     }
 
     return dataSource.post("", {
+        id: randomUUID(),
         ...userData,
         indexRef,
         createdAt: new Date().toISOString()
@@ -57,7 +82,7 @@ export async function createUserFn(userData, dataSource) {
 }
 
 export async function updateUserFn(id, userData, dataSource) {
-    checkUserFields(userData)
+    await checkUserFields(userData)
 
     if (!id) throw new ValidationError("User id is missing!")
 
