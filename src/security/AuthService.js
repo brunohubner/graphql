@@ -19,6 +19,6 @@ export class AuthService {
     }
 
     static decodeToken(token) {
-        return jwt.verify(token)
+        return jwt.verify(token, JWT_AUTH_SECRET)
     }
 }
