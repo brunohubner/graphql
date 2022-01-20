@@ -1,0 +1,15 @@
+mutation LOGIN($data: LoginInput!) {
+    login(data: $data) {
+        token
+        userId
+    }
+}
+
+# variables
+
+# {
+#   "data": {
+#     "userName": "brunohubner",
+#     "password": "dev12345"
+#   }
+# }

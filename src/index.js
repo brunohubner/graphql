@@ -10,7 +10,12 @@ const server = new ApolloServer({
     typeDefs,
     resolvers,
     context,
-    dataSources
+    dataSources,
+    uploads: false,
+    cors: {
+        origin: "https://studio.apollographql.com",
+        credentials: true
+    }
 })
 
 server.listen(port).then(({ url }) => {
