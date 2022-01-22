@@ -3,7 +3,7 @@ import {
     UserInputError,
     ValidationError
 } from "apollo-server"
-import { AuthService } from "../../../security/AuthService"
+import { AuthService } from "../../../../security/AuthService"
 import { randomUUID } from "crypto"
 
 function validateUserName(userName) {

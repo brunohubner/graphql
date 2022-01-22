@@ -1,7 +1,7 @@
 import { RESTDataSource } from "apollo-datasource-rest"
 import { AuthenticationError } from "apollo-server"
-import { API_URL } from "../../http/API_URL"
-import { AuthService } from "../../security/AuthService"
+import { API_URL } from "../../../http/API_URL"
+import { AuthService } from "../../../security/AuthService"
 
 export class LoginApi extends RESTDataSource {
     constructor() {

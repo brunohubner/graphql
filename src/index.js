@@ -1,7 +1,7 @@
 import "dotenv/config"
 import { ApolloServer } from "apollo-server"
 import { context } from "./graphql/context"
-import { resolvers, typeDefs } from "./graphql/schema"
+import { resolvers, typeDefs } from "./graphql/schemas"
 import { dataSources } from "./graphql/dataSources"
 
 const port = process.env.PORT || 4444

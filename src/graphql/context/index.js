@@ -1,5 +1,5 @@
-import { AuthService } from "../security/AuthService"
-import { UsersApi } from "./users/UsersApi"
+import { AuthService } from "../../security/AuthService"
+import { UsersApi } from "../schemas/users/UsersApi"
 
 function cookieParser(cookiesHeader) {
     // The final goal is to return an object with key/value reflecting
@@ -61,7 +61,7 @@ async function authorizeUserWithBearerToken(req) {
 export async function context({ req, res }) {
     let loggedUserId = ""
 
-    // loggedUserId = await authorizeUserWithBearerToken(req)
+    loggedUserId = await authorizeUserWithBearerToken(req)
     if (!loggedUserId) loggedUserId = await authorizeUserWithCookie(req)
 
     return { loggedUserId, res }
