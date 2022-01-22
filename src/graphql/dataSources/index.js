@@ -1,6 +1,6 @@
-import { PostsApi } from "../schemas/posts/PostsApi"
-import { UsersApi } from "../schemas/users/UsersApi"
-import { LoginApi } from "../schemas/login/LoginApi"
+import { PostsApi } from "../schemas/posts/dataSources"
+import { UsersApi } from "../schemas/users/dataSources"
+import { LoginApi } from "../schemas/login/dataSources"
 import { CommentSQLDataSource } from "../schemas/comments/dataSources"
 import { db } from "../../database"
 

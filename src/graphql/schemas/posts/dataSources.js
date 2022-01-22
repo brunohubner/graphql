@@ -16,13 +16,13 @@ export class PostsApi extends RESTDataSource {
 
     async getPosts(urlParams = {}) {
         return this.get("", urlParams, {
-            // cacheOptions: { ttl: 60 /* segs */ }
+            cacheOptions: { ttl: 0 /* segs */ }
         })
     }
 
     async getPost(postId) {
         return this.get(postId, undefined, {
-            // cacheOptions: { ttl: 60 /* segs */ }
+            cacheOptions: { ttl: 0 /* segs */ }
         })
     }
 

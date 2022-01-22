@@ -1,5 +1,5 @@
 import { AuthService } from "../../security/AuthService"
-import { UsersApi } from "../schemas/users/UsersApi"
+import { UsersApi } from "../schemas/users/dataSources"
 
 function cookieParser(cookiesHeader) {
     // The final goal is to return an object with key/value reflecting

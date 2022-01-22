@@ -19,6 +19,7 @@ mutation CREATE_USER($data: CreateUserInput!) {
 #   "data": {
 #     "firstName": "Bruno",
 #     "lastName": "Hubner",
-#     "userName": "brunohubner"
+#     "userName": "brunohubner",
+#     "password": "dev12345"
 #   }
 # }

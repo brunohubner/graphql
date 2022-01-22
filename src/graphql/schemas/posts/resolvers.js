@@ -34,8 +34,12 @@ async function user({ userId }, _, { dataSources }) {
     return dataSources.usersApi.batchLoadById(userId)
 }
 
+async function comments({ id }, _, { dataSources }) {
+    return await dataSources.commentsDb.batchLoad(id)
+}
+
 export const postResolvers = {
     Query: { post, posts },
     Mutation: { createPost, updatePost, deletePost },
-    Post: { user }
+    Post: { user, comments }
 }
