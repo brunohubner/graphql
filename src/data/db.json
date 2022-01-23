@@ -8,7 +8,7 @@
       "passwordHash": "$2b$10$9QalUNDJkbq0hWdTd1IUQOSmnbTpZcuxPyBXXuZEXHpVwfLQcqX4G",
       "indexRef": 1,
       "createdAt": "2022-01-19T11:36:15.318Z",
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1OGJjNDBlZi0xMWFiLTQwMjAtOWVjMy1lOWMyOGIzYzBjYTEiLCJpYXQiOjE2NDI4Nzc3OTksImV4cCI6MjUwNjc5MTM5OX0.QcBYmNeruhSrSQGCjwH1Hmaj4t8a1qomUsnIX7vKX28"
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1OGJjNDBlZi0xMWFiLTQwMjAtOWVjMy1lOWMyOGIzYzBjYTEiLCJpYXQiOjE2NDI5NzMxMTgsImV4cCI6MjUwNjg4NjcxOH0.HUPB67E7pJdf46XwrJj-UGHpBOfXI7-mhOOKRbVkc7o"
     },
     {
       "id": "e4f33602-6e1c-46cd-a51e-8de9f6c560f1",
@@ -18,7 +18,7 @@
       "passwordHash": "$2b$10$q.4F2CBpOppVQj8sBG6Zf.dhevhtCJt1nX5unvqpcXKpSkdQzv7BC",
       "indexRef": 2,
       "createdAt": "2022-01-19T11:39:45.061Z",
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlNGYzMzYwMi02ZTFjLTQ2Y2QtYTUxZS04ZGU5ZjZjNTYwZjEiLCJpYXQiOjE2NDI4Nzc5OTAsImV4cCI6MjUwNjc5MTU5MH0.vh5By-XinwMJOOBhLikDeoR9SUeCdhC_LikPvjYpIeU"
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlNGYzMzYwMi02ZTFjLTQ2Y2QtYTUxZS04ZGU5ZjZjNTYwZjEiLCJpYXQiOjE2NDI5NzMxMDYsImV4cCI6MjUwNjg4NjcwNn0.WuR9EVtsHyvLRgMHvvVxTLMq6JMIjIRe7jMwUIOYJMw"
     },
     {
       "id": "5a3de5b2-4083-444f-8c89-6ad1347ce240",
@@ -28,7 +28,7 @@
       "passwordHash": "$2b$10$SGfe6NJ/lQYVG7oKuEtlOe4nv97Ef3Ji1pkFGT/Z8WClxG3it3rVi",
       "indexRef": 3,
       "createdAt": "2022-01-22T19:52:52.390Z",
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YTNkZTViMi00MDgzLTQ0NGYtOGM4OS02YWQxMzQ3Y2UyNDAiLCJpYXQiOjE2NDI4ODM0OTAsImV4cCI6MjUwNjc5NzA5MH0.EYeaLiJ44tvZsB6mRHGw_uJu5rPqaWXOAOuGsoNMAwQ"
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YTNkZTViMi00MDgzLTQ0NGYtOGM4OS02YWQxMzQ3Y2UyNDAiLCJpYXQiOjE2NDI5NzMxNDEsImV4cCI6MjUwNjg4Njc0MX0.PCTczGrjCc_Dv04K-1-v52GQEGanLbdCvkDMWzkCcDo"
     },
     {
       "id": "625b9fcc-fbed-4f5f-b2ab-015a39be084d",
@@ -91,6 +91,14 @@
       "userId": "e4f33602-6e1c-46cd-a51e-8de9f6c560f1",
       "indexRef": 7,
       "createdAt": "2022-01-22T18:56:12.352Z"
+    },
+    {
+      "id": "927d1030-9290-476b-bdae-faa0155f758f",
+      "title": "Post do Paulo",
+      "body": "conteudo",
+      "userId": "5a3de5b2-4083-444f-8c89-6ad1347ce240",
+      "indexRef": 8,
+      "createdAt": "2022-01-23T21:10:37.894Z"
     }
   ],
   "comments": []

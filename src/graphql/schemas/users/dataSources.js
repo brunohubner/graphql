@@ -12,6 +12,7 @@ export class UsersApi extends RESTDataSource {
         super()
         this.baseURL = API_URL + "/users/"
         this.dataloader = createUsersDataloader(this.getUsers.bind(this))
+        this.initialize({})
     }
 
     async getUsers(urlParams = {}) {

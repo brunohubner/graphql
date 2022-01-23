@@ -15,20 +15,26 @@
         "prettier:fix": "prettier --write src/**/*.*"
     },
     "dependencies": {
+        "@graphql-tools/schema": "8.3.1",
         "apollo-datasource": "3.3.1",
         "apollo-datasource-rest": "3.5.0",
         "apollo-server": "3.6.1",
         "apollo-server-caching": "3.3.0",
+        "apollo-server-express": "3.6.2",
         "axios": "0.24.0",
         "bcrypt": "5.0.1",
+        "cors": "2.8.5",
         "dataloader": "2.0.0",
         "dotenv": "12.0.4",
+        "express": "4.17.2",
         "graphql": "16.2.0",
+        "graphql-subscriptions": "2.0.0",
         "json-server": "0.17.0",
         "jsonwebtoken": "8.5.1",
         "knex": "1.0.1",
         "mysql2": "2.3.3",
-        "node-fetch": "3.1.1"
+        "node-fetch": "3.2.0",
+        "subscriptions-transport-ws": "0.11.0"
     },
     "devDependencies": {
         "eslint": "8.6.0",

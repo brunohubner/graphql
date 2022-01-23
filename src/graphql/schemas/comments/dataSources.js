@@ -1,6 +1,7 @@
 import { SQLDataSource } from "../../dataSources/SQLDataSource"
 import { ValidationError } from "apollo-server"
 import { randomUUID } from "crypto"
+import { pubSub, COMMENT_CREATED } from "./resolvers"
 
 function normalizeComment(comment) {
     return {
@@ -33,8 +34,9 @@ export class CommentSQLDataSource extends SQLDataSource {
     }
 
     async create({ userId, postId, comment }) {
+        let post = {}
         try {
-            await this.context.dataSources.postsApi.getPost(postId)
+            post = await this.context.dataSources.postsApi.getPost(postId)
         } catch (e) {
             throw new ValidationError("Post not found!")
         }
@@ -47,12 +49,19 @@ export class CommentSQLDataSource extends SQLDataSource {
         const exixts = await this.db(this.tableName).where(partialComment)
 
         if (exixts.length) {
-            throw new ValidationError("Comment already created!")
+            // throw new ValidationError("Comment already created!")
         }
 
         partialComment.id = randomUUID()
         await this.db(this.tableName).insert(partialComment)
-        return await this.getById(partialComment.id)
+        const commentResponse = await this.getById(partialComment.id)
+
+        await pubSub.publish(COMMENT_CREATED, {
+            commentCreated: commentResponse,
+            postOwner: post?.userId || null
+        })
+
+        return commentResponse
     }
 
     async batchLoaderCallback(post_ids) {

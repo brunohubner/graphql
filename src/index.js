@@ -1,24 +1,62 @@
 import "dotenv/config"
-import { ApolloServer } from "apollo-server"
-import { context } from "./graphql/context"
+import express from "express"
+import { createServer } from "http"
+import { execute, subscribe } from "graphql"
+import { SubscriptionServer } from "subscriptions-transport-ws"
+import { makeExecutableSchema } from "@graphql-tools/schema"
+import { ApolloServer } from "apollo-server-express"
 import { resolvers, typeDefs } from "./graphql/schemas"
+import { context } from "./graphql/context"
 import { dataSources } from "./graphql/dataSources"
+import { getLoggedUserId } from "./security/getLoggedUserId"
 
-const port = process.env.PORT || 4444
+async function init() {
+    const PORT = process.env.PORT || 4444
+    const app = express()
+    const httpServer = createServer(app)
+    const schema = makeExecutableSchema({ typeDefs, resolvers })
 
-const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    context,
-    dataSources,
-    uploads: false,
-    cors: {
-        origin: "https://studio.apollographql.com",
-        credentials: true
-    }
-})
+    const subscriptionServer = SubscriptionServer.create(
+        {
+            schema,
+            execute,
+            subscribe,
+            onConnect: async (_connectionParams, webSocket, _context) => {
+                return {
+                    loggedUserId: await getLoggedUserId(webSocket.upgradeReq),
+                    dataSources: dataSources()
+                }
+            }
+        },
+        { server: httpServer, path: "/graphql" }
+    )
 
-server.listen(port).then(({ url }) => {
-    // eslint-disable-next-line no-console
-    console.log(`Server listen at ${url}`)
-})
+    const server = new ApolloServer({
+        schema,
+        context,
+        dataSources,
+        plugins: [
+            {
+                async serverWillStart() {
+                    return {
+                        async drainServer() {
+                            subscriptionServer.close()
+                        }
+                    }
+                }
+            }
+        ]
+    })
+    await server.start()
+    server.applyMiddleware({
+        app,
+        cors: { credentials: true, origin: "https://studio.apollographql.com" }
+    })
+
+    httpServer.listen(PORT, () =>
+        // eslint-disable-next-line no-console
+        console.log(`Server is now running on http://localhost:${PORT}/graphql`)
+    )
+}
+
+init()
