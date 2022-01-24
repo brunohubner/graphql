@@ -1,13 +1,14 @@
 {
     "name": "graphql",
     "version": "1.0.0",
-    "main": "src/index.js",
+    "main": "dist/index.js",
     "license": "MIT",
     "private": true,
     "author": "Bruno Hubner <brunohubnerdev@gmail.com>",
     "scripts": {
-        "start": "node -r sucrase/register .",
-        "dev": "nodemon --watch ./src -e js -r sucrase/register .",
+        "build": "rimraf ./dist && sucrase ./src -d ./dist --transforms imports",
+        "start": "node .",
+        "dev": "nodemon --watch ./src -e js -r sucrase/register src",
         "server": "json-server --watch src/data/db.json -p 3333",
         "knex:migrate:make": "knex --knexfile src/database/knexfile.js migrate:make",
         "knex:migrate:latest": "knex --knexfile src/database/knexfile.js migrate:latest",
@@ -34,6 +35,7 @@
         "knex": "1.0.1",
         "mysql2": "2.3.3",
         "node-fetch": "3.2.0",
+        "rimraf": "3.0.2",
         "subscriptions-transport-ws": "0.11.0"
     },
     "devDependencies": {
@@ -41,5 +43,8 @@
         "nodemon": "2.0.15",
         "prettier": "2.5.1",
         "sucrase": "3.20.3"
+    },
+    "engines": {
+        "node": "14"
     }
 }

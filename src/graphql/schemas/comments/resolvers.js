@@ -25,9 +25,8 @@ const commentCreated = {
         (payload, _variables, { loggedUserId }) => {
             const hasPostOwner = payload.postOwner !== null
             const postOwnerIsLoggedUser = payload.postOwner === loggedUserId
-            const notIsMyPost = payload.commentCreated.userId !== loggedUserId
-            const shouldNotifyUser =
-                hasPostOwner && postOwnerIsLoggedUser && notIsMyPost
+            // const notIsMyPost = payload.commentCreated.userId !== loggedUserId
+            const shouldNotifyUser = hasPostOwner && postOwnerIsLoggedUser // && notIsMyPost
             return shouldNotifyUser
         }
     )

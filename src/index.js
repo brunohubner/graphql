@@ -26,7 +26,8 @@ async function init() {
                     loggedUserId: await getLoggedUserId(webSocket.upgradeReq),
                     dataSources: dataSources()
                 }
-            }
+            },
+            keepAlive: 10000 // 10 seconds
         },
         { server: httpServer, path: "/graphql" }
     )
