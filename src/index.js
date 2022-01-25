@@ -1,5 +1,6 @@
 import "dotenv/config"
 import express from "express"
+import cors from "cors"
 import { createServer } from "http"
 import { execute, subscribe } from "graphql"
 import { SubscriptionServer } from "subscriptions-transport-ws"
@@ -12,7 +13,12 @@ import { getLoggedUserId } from "./security/getLoggedUserId"
 
 async function init() {
     const PORT = process.env.PORT || 4444
+    const corsOptions = {
+        credentials: true,
+        origin: ["https://studio.apollographql.com", "http://localhost:3000"]
+    }
     const app = express()
+    app.use(cors(corsOptions))
     const httpServer = createServer(app)
     const schema = makeExecutableSchema({ typeDefs, resolvers })
 
@@ -48,11 +54,9 @@ async function init() {
             }
         ]
     })
+
     await server.start()
-    server.applyMiddleware({
-        app,
-        cors: { credentials: true, origin: "https://studio.apollographql.com" }
-    })
+    server.applyMiddleware({ app, cors: corsOptions })
 
     httpServer.listen(PORT, () =>
         // eslint-disable-next-line no-console
