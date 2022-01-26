@@ -1,0 +1,10 @@
+subscription COMMENT_CREATED {
+  commentCreated {
+    id
+    comment
+    user {
+      id
+      firstName
+    }
+  }
+}

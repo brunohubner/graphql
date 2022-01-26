@@ -1,9 +1,9 @@
 import { isLogged } from "../login/isLogged"
 
 // Query resolvers
-async function post(_, { postId }, { dataSources, loggedUserId }) {
+async function post(_, { id }, { dataSources, loggedUserId }) {
     isLogged(loggedUserId)
-    return await dataSources.postsApi.getPost(postId)
+    return await dataSources.postsApi.getPost(id)
 }
 
 async function posts(_, { input }, { dataSources, loggedUserId }) {
@@ -18,15 +18,15 @@ async function createPost(_, { data }, { dataSources, loggedUserId }) {
     return dataSources.postsApi.createPost(data)
 }
 
-async function updatePost(_, { postId, data }, { dataSources, loggedUserId }) {
+async function updatePost(_, { id, data }, { dataSources, loggedUserId }) {
     isLogged(loggedUserId)
     data.userId = loggedUserId
-    return dataSources.postsApi.updatePost(postId, data)
+    return dataSources.postsApi.updatePost(id, data)
 }
 
-async function deletePost(_, { postId }, { dataSources, loggedUserId }) {
+async function deletePost(_, { id }, { dataSources, loggedUserId }) {
     isLogged(loggedUserId)
-    return dataSources.postsApi.deletePost(postId)
+    return dataSources.postsApi.deletePost(id)
 }
 
 // Fields resolvers

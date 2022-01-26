@@ -1,0 +1,16 @@
+mutation CREATE_COMMENT($data: CreateCommentInput!) {
+  createComment(data: $data) {
+    id
+    comment
+    }
+  }
+}
+
+# variables
+
+# {
+#   "data": {
+#     "comment": "Bruno comentou Bruno",
+#     "postId": "893fea84-e080-4346-a2db-2ce50cbe68e2"
+#   }
+# }

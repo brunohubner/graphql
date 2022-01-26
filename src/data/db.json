@@ -8,7 +8,7 @@
       "passwordHash": "$2b$10$9QalUNDJkbq0hWdTd1IUQOSmnbTpZcuxPyBXXuZEXHpVwfLQcqX4G",
       "indexRef": 1,
       "createdAt": "2022-01-19T11:36:15.318Z",
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1OGJjNDBlZi0xMWFiLTQwMjAtOWVjMy1lOWMyOGIzYzBjYTEiLCJpYXQiOjE2NDMwNDQyNjgsImV4cCI6MjUwNjk1Nzg2OH0.ntL_BtjTqVB-WHXdrWGHRdAeW2VH9hZOQhVjaaVBrBo"
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1OGJjNDBlZi0xMWFiLTQwMjAtOWVjMy1lOWMyOGIzYzBjYTEiLCJpYXQiOjE2NDMyMzU4NDAsImV4cCI6MjUwNzE0OTQ0MH0.J4Xi65VLGquxOGILjPyMPTATIakKUHXuxvFXgQ3boRU"
     },
     {
       "id": "e4f33602-6e1c-46cd-a51e-8de9f6c560f1",
@@ -18,7 +18,7 @@
       "passwordHash": "$2b$10$q.4F2CBpOppVQj8sBG6Zf.dhevhtCJt1nX5unvqpcXKpSkdQzv7BC",
       "indexRef": 2,
       "createdAt": "2022-01-19T11:39:45.061Z",
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlNGYzMzYwMi02ZTFjLTQ2Y2QtYTUxZS04ZGU5ZjZjNTYwZjEiLCJpYXQiOjE2NDMwMzIwMzQsImV4cCI6MjUwNjk0NTYzNH0.T0E8YxoXcoxgDYonWpyz4rRdyC2YSGufvreWEQZ0zsw"
+      "token": ""
     },
     {
       "id": "5a3de5b2-4083-444f-8c89-6ad1347ce240",
@@ -52,14 +52,6 @@
     }
   ],
   "posts": [
-    {
-      "id": "893fea84-e080-4346-a2db-2ce50cbe68e2",
-      "title": "Typescript vs Javascript",
-      "body": "Com toda certeza, Typescript é melhor que Javascript",
-      "userId": "58bc40ef-11ab-4020-9ec3-e9c28b3c0ca1",
-      "indexRef": 1,
-      "createdAt": "2022-01-19T11:36:37.716Z"
-    },
     {
       "id": "845709c1-ee43-4737-87a7-df15e2ffdcc2",
       "title": "Enfermagem",
@@ -99,6 +91,102 @@
       "userId": "5a3de5b2-4083-444f-8c89-6ad1347ce240",
       "indexRef": 8,
       "createdAt": "2022-01-23T21:10:37.894Z"
+    },
+    {
+      "id": "fd2ba8d7-a120-4ab3-a18a-9d788662fafc",
+      "title": "Post do Bruno 1",
+      "body": "Conteudo do post do Bruno",
+      "userId": "58bc40ef-11ab-4020-9ec3-e9c28b3c0ca1",
+      "indexRef": 9,
+      "createdAt": "2022-01-26T17:57:10.214Z"
+    },
+    {
+      "id": "f01e53fc-0f5f-4cd1-a908-360b218723ab",
+      "title": "Post do Bruno 2",
+      "body": "Conteudo do post do Bruno",
+      "userId": "58bc40ef-11ab-4020-9ec3-e9c28b3c0ca1",
+      "indexRef": 10,
+      "createdAt": "2022-01-26T17:57:13.238Z"
+    },
+    {
+      "id": "0a9c1a76-7476-4f74-9d7d-5a6c73aa6909",
+      "title": "Post do Bruno 3",
+      "body": "Conteudo do post do Bruno",
+      "userId": "58bc40ef-11ab-4020-9ec3-e9c28b3c0ca1",
+      "indexRef": 11,
+      "createdAt": "2022-01-26T17:57:16.007Z"
+    },
+    {
+      "id": "b2d5ba76-5cf1-4092-bcbf-24c91bb3c114",
+      "title": "Post do Bruno 4",
+      "body": "Conteudo do post do Bruno",
+      "userId": "58bc40ef-11ab-4020-9ec3-e9c28b3c0ca1",
+      "indexRef": 12,
+      "createdAt": "2022-01-26T17:57:19.486Z"
+    },
+    {
+      "id": "7b093edd-5790-4058-9532-ae12d300659d",
+      "title": "Post do Bruno 5",
+      "body": "Conteudo do post do Bruno",
+      "userId": "58bc40ef-11ab-4020-9ec3-e9c28b3c0ca1",
+      "indexRef": 13,
+      "createdAt": "2022-01-26T17:57:22.004Z"
+    },
+    {
+      "id": "35184200-6793-464d-80b6-de33f620a8a4",
+      "title": "Post do Bruno 6",
+      "body": "Conteudo do post do Bruno",
+      "userId": "58bc40ef-11ab-4020-9ec3-e9c28b3c0ca1",
+      "indexRef": 14,
+      "createdAt": "2022-01-26T17:57:24.724Z"
+    },
+    {
+      "id": "e0d0106c-6ac0-44e5-b770-7ea88a5abf33",
+      "title": "Post do Bruno 7",
+      "body": "Conteudo do post do Bruno",
+      "userId": "58bc40ef-11ab-4020-9ec3-e9c28b3c0ca1",
+      "indexRef": 15,
+      "createdAt": "2022-01-26T17:57:26.985Z"
+    },
+    {
+      "id": "a91c9aec-a3c3-4fb2-84a6-29a2edf095a7",
+      "title": "Post do Bruno 8",
+      "body": "Conteudo do post do Bruno",
+      "userId": "58bc40ef-11ab-4020-9ec3-e9c28b3c0ca1",
+      "indexRef": 16,
+      "createdAt": "2022-01-26T17:57:29.418Z"
+    },
+    {
+      "id": "e33515f6-e367-4439-98e5-9b420b00be93",
+      "title": "Post do Bruno 9",
+      "body": "Conteudo do post do Bruno",
+      "userId": "58bc40ef-11ab-4020-9ec3-e9c28b3c0ca1",
+      "indexRef": 17,
+      "createdAt": "2022-01-26T17:57:35.687Z"
+    },
+    {
+      "id": "306b3b1f-d145-4394-bd62-ebb114688741",
+      "title": "Post do Bruno 10",
+      "body": "Conteudo do post do Bruno",
+      "userId": "58bc40ef-11ab-4020-9ec3-e9c28b3c0ca1",
+      "indexRef": 18,
+      "createdAt": "2022-01-26T17:57:38.485Z"
+    },
+    {
+      "id": "dc4e6c6f-4f63-49a6-9ea6-2351a34abe5f",
+      "title": "Post do Bruno 11",
+      "body": "Conteudo do post do Bruno",
+      "userId": "58bc40ef-11ab-4020-9ec3-e9c28b3c0ca1",
+      "indexRef": 19,
+      "createdAt": "2022-01-26T17:57:41.288Z"
+    },
+    {
+      "id": "4ec9ca8b-c27f-443d-99b7-265f80306a9c",
+      "title": "Post do Bruno 12",
+      "body": "Conteudo do post do Bruno",
+      "userId": "58bc40ef-11ab-4020-9ec3-e9c28b3c0ca1",
+      "indexRef": 20,
+      "createdAt": "2022-01-26T17:57:44.247Z"
     }
   ],
   "comments": []
