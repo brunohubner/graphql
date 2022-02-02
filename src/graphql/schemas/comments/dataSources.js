@@ -34,6 +34,10 @@ export class CommentSQLDataSource extends SQLDataSource {
     }
 
     async create({ userId, postId, comment }) {
+        if (!comment) {
+            throw new ValidationError("Comment is missing!")
+        }
+
         let post = {}
         try {
             post = await this.context.dataSources.postsApi.getPost(postId)
@@ -49,7 +53,7 @@ export class CommentSQLDataSource extends SQLDataSource {
         const exixts = await this.db(this.tableName).where(partialComment)
 
         if (exixts.length) {
-            // throw new ValidationError("Comment already created!")
+            throw new ValidationError("Comment already created!")
         }
 
         partialComment.id = randomUUID()
