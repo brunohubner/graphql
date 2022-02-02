@@ -9,7 +9,7 @@ function normalizeComment(comment) {
         comment: comment.comment,
         userId: comment.user_id,
         postId: comment.post_id,
-        createdAt: comment.created_at
+        createdAt: new Date(comment.created_at).toISOString()
     }
 }
 
