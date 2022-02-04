@@ -13,6 +13,7 @@ export const commentTypeDefs = gql`
         id: ID!
         comment: String!
         user: User!
+        postId: String!
         createdAt: String!
     }
 
